@@ -1,0 +1,62 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (payment(); as paymentRef) {
+      <div>
+        <h2 data-cy="paymentDetailsHeading"><span>Payment</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span>ID</span></dt>
+          <dd>
+            <span>{{ paymentRef.id }}</span>
+          </dd>
+          <dt><span>Amount</span></dt>
+          <dd>
+            <span>{{ paymentRef.amount }}</span>
+          </dd>
+          <dt><span>Status</span></dt>
+          <dd>
+            <span>{{ paymentRef.status }}</span>
+          </dd>
+          <dt><span>Created By</span></dt>
+          <dd>
+            <span>{{ paymentRef.createdBy }}</span>
+          </dd>
+          <dt><span>Created Date</span></dt>
+          <dd>
+            <span>{{ paymentRef.createdDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span>Last Modified By</span></dt>
+          <dd>
+            <span>{{ paymentRef.lastModifiedBy }}</span>
+          </dd>
+          <dt><span>Last Modified Date</span></dt>
+          <dd>
+            <span>{{ paymentRef.lastModifiedDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span>Booking</span></dt>
+          <dd>
+            @if (payment()!.booking) {
+              <div>
+                <a [routerLink]="['/booking', payment()!.booking?.id, 'view']">{{ paymentRef.booking?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/payment', paymentRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

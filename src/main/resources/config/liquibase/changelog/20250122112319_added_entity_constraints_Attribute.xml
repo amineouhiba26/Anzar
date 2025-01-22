@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <!--
+        Added the constraints for entity Attribute.
+    -->
+    <changeSet id="20250122112319-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="attribute_group_id"
+                                 baseTableName="attribute"
+                                 constraintName="fk_attribute__attribute_group_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="attribute_group"
+                                 />
+    </changeSet>
+</databaseChangeLog>

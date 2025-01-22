@@ -1,0 +1,42 @@
+{
+  "annotations": {
+    "changelogDate": "20250122112322"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "amount",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastModifiedDate",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "name": "Payment",
+  "relationships": [
+    {
+      "otherEntityName": "booking",
+      "relationshipName": "booking",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}

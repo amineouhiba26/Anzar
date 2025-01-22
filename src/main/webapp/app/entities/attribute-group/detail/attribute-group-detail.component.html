@@ -1,0 +1,60 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (attributeGroup(); as attributeGroupRef) {
+      <div>
+        <h2 data-cy="attributeGroupDetailsHeading"><span>Attribute Group</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span>ID</span></dt>
+          <dd>
+            <span>{{ attributeGroupRef.id }}</span>
+          </dd>
+          <dt><span>Name</span></dt>
+          <dd>
+            <span>{{ attributeGroupRef.name }}</span>
+          </dd>
+          <dt><span>Created By</span></dt>
+          <dd>
+            <span>{{ attributeGroupRef.createdBy }}</span>
+          </dd>
+          <dt><span>Created Date</span></dt>
+          <dd>
+            <span>{{ attributeGroupRef.createdDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span>Last Modified By</span></dt>
+          <dd>
+            <span>{{ attributeGroupRef.lastModifiedBy }}</span>
+          </dd>
+          <dt><span>Last Modified Date</span></dt>
+          <dd>
+            <span>{{ attributeGroupRef.lastModifiedDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span>Custom Configuration</span></dt>
+          <dd>
+            @if (attributeGroup()!.customConfiguration) {
+              <div>
+                <a [routerLink]="['/custom-configuration', attributeGroup()!.customConfiguration?.id, 'view']">{{
+                  attributeGroupRef.customConfiguration?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/attribute-group', attributeGroupRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

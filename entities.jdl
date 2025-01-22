@@ -1,0 +1,166 @@
+// Abstract auditing fields (manual duplication required)
+entity Admin {
+  username String
+  firstName String
+  lastName String
+  email String
+  phoneNumber String
+  status String
+  accessLevel String
+  createdBy String
+  createdDate ZonedDateTime
+  lastModifiedBy String
+  lastModifiedDate ZonedDateTime
+}
+
+entity CustomUser {
+  username String
+  firstName String
+  lastName String
+  email String
+  phoneNumber String
+  status String
+  createdBy String
+  createdDate ZonedDateTime
+  lastModifiedBy String
+  lastModifiedDate ZonedDateTime
+}
+
+entity Agency {
+  name String
+  email String
+  phoneNumber String
+  position String
+  createdBy String
+  createdDate ZonedDateTime
+  lastModifiedBy String
+  lastModifiedDate ZonedDateTime
+}
+
+entity Role {
+  name String
+  description String
+  createdBy String
+  createdDate ZonedDateTime
+  lastModifiedBy String
+  lastModifiedDate ZonedDateTime
+}
+
+entity Property {
+  name String
+  price BigDecimal
+  location String
+  createdBy String
+  createdDate ZonedDateTime
+  lastModifiedBy String
+  lastModifiedDate ZonedDateTime
+}
+
+entity Media {
+  url String
+  caption String
+  category String
+  order Integer
+  createdBy String
+  createdDate ZonedDateTime
+  lastModifiedBy String
+  lastModifiedDate ZonedDateTime
+}
+
+entity CustomConfiguration {
+  name String
+  description String
+  createdBy String
+  createdDate ZonedDateTime
+  lastModifiedBy String
+  lastModifiedDate ZonedDateTime
+}
+
+entity AttributeGroup {
+  name String
+  createdBy String
+  createdDate ZonedDateTime
+  lastModifiedBy String
+  lastModifiedDate ZonedDateTime
+}
+
+entity Attribute {
+  name String
+  type String
+  createdBy String
+  createdDate ZonedDateTime
+  lastModifiedBy String
+  lastModifiedDate ZonedDateTime
+}
+
+entity AttributeValue {
+  valueString String
+  valueBigDecimal BigDecimal
+  valueBoolean Boolean
+  createdBy String
+  createdDate ZonedDateTime
+  lastModifiedBy String
+  lastModifiedDate ZonedDateTime
+}
+
+entity Booking {
+  startDate ZonedDateTime
+  endDate ZonedDateTime
+  total BigDecimal
+  status String
+  createdBy String
+  createdDate ZonedDateTime
+  lastModifiedBy String
+  lastModifiedDate ZonedDateTime
+}
+
+entity Payment {
+  amount BigDecimal
+  status String
+  createdBy String
+  createdDate ZonedDateTime
+  lastModifiedBy String
+  lastModifiedDate ZonedDateTime
+}
+
+// Relationships
+relationship OneToMany {
+  Agency { users } to CustomUser
+}
+
+relationship OneToOne {
+  Admin { agency } to Agency
+}
+
+relationship ManyToOne {
+  CustomUser { role } to Role
+}
+
+relationship ManyToOne {
+  Property { configuration } to CustomConfiguration
+}
+
+relationship OneToMany {
+  CustomConfiguration { attributeGroups } to AttributeGroup
+}
+
+relationship OneToMany {
+  AttributeGroup { attributes } to Attribute
+}
+
+relationship OneToMany {
+  Property { media } to Media
+}
+
+relationship OneToMany {
+  Property { attributes } to AttributeValue
+}
+
+relationship ManyToOne {
+  Booking { property } to Property
+  Booking { user } to CustomUser
+}
+
+relationship OneToOne {
+  Payment { booking } to Booking
+}

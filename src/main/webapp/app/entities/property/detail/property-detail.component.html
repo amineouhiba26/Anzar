@@ -1,0 +1,66 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (property(); as propertyRef) {
+      <div>
+        <h2 data-cy="propertyDetailsHeading"><span>Property</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span>ID</span></dt>
+          <dd>
+            <span>{{ propertyRef.id }}</span>
+          </dd>
+          <dt><span>Name</span></dt>
+          <dd>
+            <span>{{ propertyRef.name }}</span>
+          </dd>
+          <dt><span>Price</span></dt>
+          <dd>
+            <span>{{ propertyRef.price }}</span>
+          </dd>
+          <dt><span>Location</span></dt>
+          <dd>
+            <span>{{ propertyRef.location }}</span>
+          </dd>
+          <dt><span>Created By</span></dt>
+          <dd>
+            <span>{{ propertyRef.createdBy }}</span>
+          </dd>
+          <dt><span>Created Date</span></dt>
+          <dd>
+            <span>{{ propertyRef.createdDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span>Last Modified By</span></dt>
+          <dd>
+            <span>{{ propertyRef.lastModifiedBy }}</span>
+          </dd>
+          <dt><span>Last Modified Date</span></dt>
+          <dd>
+            <span>{{ propertyRef.lastModifiedDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span>Configuration</span></dt>
+          <dd>
+            @if (property()!.configuration) {
+              <div>
+                <a [routerLink]="['/custom-configuration', property()!.configuration?.id, 'view']">{{ propertyRef.configuration?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/property', propertyRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

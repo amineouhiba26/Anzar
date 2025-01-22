@@ -1,0 +1,70 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (media(); as mediaRef) {
+      <div>
+        <h2 data-cy="mediaDetailsHeading"><span>Media</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span>ID</span></dt>
+          <dd>
+            <span>{{ mediaRef.id }}</span>
+          </dd>
+          <dt><span>Url</span></dt>
+          <dd>
+            <span>{{ mediaRef.url }}</span>
+          </dd>
+          <dt><span>Caption</span></dt>
+          <dd>
+            <span>{{ mediaRef.caption }}</span>
+          </dd>
+          <dt><span>Category</span></dt>
+          <dd>
+            <span>{{ mediaRef.category }}</span>
+          </dd>
+          <dt><span>Order</span></dt>
+          <dd>
+            <span>{{ mediaRef.order }}</span>
+          </dd>
+          <dt><span>Created By</span></dt>
+          <dd>
+            <span>{{ mediaRef.createdBy }}</span>
+          </dd>
+          <dt><span>Created Date</span></dt>
+          <dd>
+            <span>{{ mediaRef.createdDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span>Last Modified By</span></dt>
+          <dd>
+            <span>{{ mediaRef.lastModifiedBy }}</span>
+          </dd>
+          <dt><span>Last Modified Date</span></dt>
+          <dd>
+            <span>{{ mediaRef.lastModifiedDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span>Property</span></dt>
+          <dd>
+            @if (media()!.property) {
+              <div>
+                <a [routerLink]="['/property', media()!.property?.id, 'view']">{{ mediaRef.property?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/media', mediaRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

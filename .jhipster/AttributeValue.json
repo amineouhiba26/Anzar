@@ -1,0 +1,39 @@
+{
+  "annotations": {
+    "changelogDate": "20250122112320"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "valueString",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "valueBigDecimal",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "valueBoolean",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastModifiedDate",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "name": "AttributeValue",
+  "relationships": [],
+  "searchEngine": "no"
+}

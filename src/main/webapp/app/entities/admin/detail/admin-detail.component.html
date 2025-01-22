@@ -1,0 +1,82 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (admin(); as adminRef) {
+      <div>
+        <h2 data-cy="adminDetailsHeading"><span>Admin</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span>ID</span></dt>
+          <dd>
+            <span>{{ adminRef.id }}</span>
+          </dd>
+          <dt><span>Username</span></dt>
+          <dd>
+            <span>{{ adminRef.username }}</span>
+          </dd>
+          <dt><span>First Name</span></dt>
+          <dd>
+            <span>{{ adminRef.firstName }}</span>
+          </dd>
+          <dt><span>Last Name</span></dt>
+          <dd>
+            <span>{{ adminRef.lastName }}</span>
+          </dd>
+          <dt><span>Email</span></dt>
+          <dd>
+            <span>{{ adminRef.email }}</span>
+          </dd>
+          <dt><span>Phone Number</span></dt>
+          <dd>
+            <span>{{ adminRef.phoneNumber }}</span>
+          </dd>
+          <dt><span>Status</span></dt>
+          <dd>
+            <span>{{ adminRef.status }}</span>
+          </dd>
+          <dt><span>Access Level</span></dt>
+          <dd>
+            <span>{{ adminRef.accessLevel }}</span>
+          </dd>
+          <dt><span>Created By</span></dt>
+          <dd>
+            <span>{{ adminRef.createdBy }}</span>
+          </dd>
+          <dt><span>Created Date</span></dt>
+          <dd>
+            <span>{{ adminRef.createdDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span>Last Modified By</span></dt>
+          <dd>
+            <span>{{ adminRef.lastModifiedBy }}</span>
+          </dd>
+          <dt><span>Last Modified Date</span></dt>
+          <dd>
+            <span>{{ adminRef.lastModifiedDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span>Agency</span></dt>
+          <dd>
+            @if (admin()!.agency) {
+              <div>
+                <a [routerLink]="['/agency', admin()!.agency?.id, 'view']">{{ adminRef.agency?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/admin', adminRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>
